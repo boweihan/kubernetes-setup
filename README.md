@@ -28,23 +28,23 @@ This repo will deploy three 'microservices'
 ```
 minikube start
 
-kubectl create -f k8s-mastery/resource-manifests/sa-frontend-pod.yaml
+kubectl create -f resource-manifests/sa-frontend-pod.yaml
 kubectl port-forward sa-frontend 80:80
 kubectl get pods
 
 DEPLOY WEB ON ANOTHER POD
-sudo kubectl create -f k8s-mastery/resource-manifests/sa-frontend-pod2.yaml
+sudo kubectl create -f resource-manifests/sa-frontend-pod2.yaml
 kubectl get pods
 
 CREATE SERVICE FOR FRONTENDS
-kubectl create -f k8s-mastery/resource-manifests/service-sa-frontend-lb.yaml
+kubectl create -f resource-manifests/service-sa-frontend-lb.yaml
 kubectl get svc
 
 TO RUN THE LOAD BALANCED APPLICATION
 kubectl get svc
 
 CREATE A DEPLOYMENT INSTEAD OF TWO SEPARATE PODS
-kubectl apply -f k8s-mastery/resource-manifests/sa-frontend-deployment.yaml
+kubectl apply -f resource-manifests/sa-frontend-deployment.yaml
 
 DELETE THE OLD PODS
 kubectl delete pod sa-frontend
@@ -53,7 +53,7 @@ kubectl delete pod sa-frontend2
 *** IF YOU DELETE A DEPLOYMENT POD NOW IT WILL BE RECREATED ***
 
 DEPLOY A NEW GREEN IMAGE (--record=true will create a history description)
-kubectl apply -f k8s-mastery/resource-manifests/sa-frontend-deployment-green.yaml --record=true
+kubectl apply -f resource-manifests/sa-frontend-deployment-green.yaml --record=true
 
 CHECK DEPLOYMENT ROLLOUT
 kubectl rollout status deployment sa-frontend
