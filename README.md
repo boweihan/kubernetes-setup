@@ -86,6 +86,10 @@ npm run build
 docker build -f Dockerfile -t $DOCKER_USER_ID/sentiment-analysis-frontend:minikube .
 docker push $DOCKER_USER_ID/sentiment-analysis-frontend:minikube
 kubectl apply -f sa-frontend-deployment.yaml
+
+SERVE WITH NGROK TO THE PUBLIC
+./ngrok http $DEPLOYMENT_IP:$DEPLOYMENT_PORT
+
 ```
 
 
